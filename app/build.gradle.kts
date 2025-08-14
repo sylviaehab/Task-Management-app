@@ -47,7 +47,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
 // --- Coroutines (needed for suspend DAO functions) ---
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.1")
-
+    implementation("androidx.fragment:fragment-ktx:1.8.2")
     kapt("androidx.room:room-compiler:$room_version")
     implementation("androidx.room:room-runtime:$room_version")
     implementation("androidx.room:room-ktx:${room_version}")
