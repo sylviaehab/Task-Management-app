@@ -54,3 +54,8 @@ Notes:
 User (1) -> (many) Project
 Project (1) -> (many) Task
 Task (1) -> (many) Attachment
+
+
+
+suspend fun DAO queries like getAllProjectsOnce() return a one-time snapshot of the data. They run once and complete.
+Flow DAO queries like getAllProjectsFlow() return a cold stream that emits whenever the underlying table changes. This is reactive and keeps the UI updated without re-querying manually.
