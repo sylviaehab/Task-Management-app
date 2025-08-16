@@ -15,12 +15,30 @@ interface TaskDao {
     @Query("SELECT * FROM tasks WHERE id = :id")
     suspend fun getById(id: Int): Task?
 
-    @Query("SELECT * FROM tasks WHERE projectId = :projectId")
+    @Query("""
+        SELECT tasks.* 
+        FROM tasks
+        INNER JOIN project_task_cross_ref
+        ON tasks.id = project_task_cross_ref.taskId
+        WHERE project_task_cross_ref.projectId = :projectId
+    """)
     suspend fun getTasksInProjectOnce(projectId: Int): List<Task>
 
-    @Query("SELECT * FROM tasks WHERE projectId = :projectId")
+    @Query("""
+        SELECT tasks.* 
+        FROM tasks
+        INNER JOIN project_task_cross_ref
+        ON tasks.id = project_task_cross_ref.taskId
+        WHERE project_task_cross_ref.projectId = :projectId
+    """)
     fun getTasksInProjectFlow(projectId: Int): Flow<List<Task>>
 
-    @Query("SELECT * FROM tasks WHERE projectId = :projectId")
+    @Query("""
+        SELECT tasks.* 
+        FROM tasks
+        INNER JOIN project_task_cross_ref
+        ON tasks.id = project_task_cross_ref.taskId
+        WHERE project_task_cross_ref.projectId = :projectId
+    """)
     fun getTasksInProjectLiveData(projectId: Int): LiveData<List<Task>>
 }

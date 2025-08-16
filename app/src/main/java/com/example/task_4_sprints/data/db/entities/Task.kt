@@ -7,19 +7,11 @@ import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity(
-    tableName = "tasks",
-    foreignKeys = [
-        ForeignKey(
-            entity = Project::class,
-            parentColumns = ["id"],
-            childColumns = ["projectId"],
-            onDelete = ForeignKey.CASCADE
-        )
-    ],
-    indices = [Index("projectId")]
+    tableName = "tasks"
+
 )
 data class Task(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val description: String,
-    val projectId: Int
+
 )
