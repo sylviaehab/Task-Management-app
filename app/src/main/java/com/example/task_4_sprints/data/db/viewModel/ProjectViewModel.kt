@@ -12,10 +12,8 @@ class ProjectViewModel(
     private val taskDao: TaskDao
 ) : ViewModel() {
 
-    // LiveData for UI (list all projects)
     val allProjectsLiveData = projectDao.getAllProjectsLiveData()
 
-    // Flow for tasks in a specific project (example projectId param can be provided by factory)
     fun tasksFlow(projectId: Int): Flow<List<com.example.task_4_sprints.data.db.entities.Task>> =
         taskDao.getTasksInProjectFlow(projectId)
 }
